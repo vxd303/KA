@@ -56,7 +56,8 @@
     <string name="error_unknown">未知错误</string>
     <string name="error_unavailable">无法认证</string>
     <string name="error_unavailable_summary">
-    认证出现错误，在菜单调整选项后再试。始终无法认证的常见原因是无法使用工厂配置的认证密钥，
+    认证出现错误，在菜单调整选项后再试。
+    始终无法认证的常见原因是无法使用工厂配置的认证密钥，
     可能因为设备配置有误或 persist 分区损坏。
     </string>
     <string name="error_cant_parse_cert">无法解析证书</string>
@@ -69,7 +70,8 @@
     </string>
     <string name="error_deviceids_unavailable">无法认证设备 ID</string>
     <string name="error_deviceids_unavailable_summary">
-    设备声明支持 ID 认证，但有 ID 不存在，不匹配或设备已无法再证明其 ID。在菜单调整选项后再试。
+    设备声明支持 ID 认证，但有 ID 不存在，
+    不匹配或设备已无法再证明其 ID。在菜单调整选项后再试。
     </string>
     <string name="error_out_of_keys">没有远程配置的认证密钥</string>
     <string name="error_out_of_keys_summary">
@@ -77,7 +79,8 @@
     </string>
     <string name="error_out_of_keys_transient">暂无远程配置的认证密钥</string>
     <string name="error_out_of_keys_transient_summary">
-    密钥池已用完，请在联网环境下重试。如果服务器暂时拒绝颁发密钥，请检查系统更新。
+    密钥池已用完，请在联网环境下重试。
+    如果服务器暂时拒绝颁发密钥，请检查系统更新。
     </string>
     <string name="error_unavailable_transient">暂时无法认证</string>
     <string name="error_unavailable_transient_summary">
@@ -98,7 +101,8 @@
     </string>
     <string name="rpc_version_number">版本</string>
     <string name="rpc_version_number_description">
-    远程配置组件硬件的实现版本。此处提供的版本必须与证书签名请求中报告的版本相匹配。
+    远程配置组件硬件的实现版本。
+    此处提供的版本必须与证书签名请求中报告的版本相匹配。
     </string>
     <string name="rpc_author_name">供应商</string>
     <string name="rpc_author_name_description">
@@ -106,11 +110,14 @@
     </string>
     <string name="rpc_unique_id">标识符</string>
     <string name="rpc_unique_id_description">
-    远程配置组件实现的不透明标识符。每个实现必须具有与所有其他实现不同的标识符，并且在所有设备上保持一致。
+    远程配置组件实现的不透明标识符。
+    每个实现必须具有与所有其他实现不同的标识符，并且在所有设备上保持一致。
     </string>
     <string name="rkp_device_info">设备信息</string>
     <string name="rkp_device_info_description">
-    由远程配置组件签名的设备相关信息。服务器将检查这些值，与工厂制造设备时上传的值对比，
+    由远程配置组件签名的设备相关信息。
+    服务器将检查这些值，
+    与工厂制造设备时上传的值对比，
     来验证远程配置组件实例生成的证书签名请求是否来自预期的设备。
     </string>
     <string name="rkp_hostname">远程配置服务器主机名</string>
@@ -118,7 +125,7 @@
 
     <string name="attestation">认证</string>
     <string name="attestation_version_description"><![CDATA[<font face="sans-serif-medium">版本：</font><br>密钥认证功能的版本。]]></string>
-    <string name="keymaster_version_description"><![CDATA[<font face="sans-serif-medium">版本：</font><br>Keymaster 或 KeyMint 硬件抽象层 (HAL) 的版本。]]></string>
+    <string name="keymaster_version_description"><![CDATA[<font face="sans-serif-medium">版本：</font><br>Keymaster 或 KeyMint 硬件抽象层（HAL）的版本。]]></string>
     <string name="security_level_description"><![CDATA[<font face="sans-serif-medium">安全等级：</font><br>表示功能受保护的程度基于其在设备中的位置。<p><ul><li gap="8sp"><font face="sans-serif-medium">软件</font><br>用于创建和管理功能的逻辑在 Android 系统中实现。如果用于创建和存储密钥对，此位置没有可信环境安全，但比应用的进程空间安全。</li><li gap="8sp"><font face="sans-serif-medium">可信环境</font><br>用于创建和管理功能的逻辑在可信执行环境中实现。如果用于创建和存储密钥对，此位置比较安全，因为安全硬件更能抵御远程攻击。</li><li gap="8sp"><font face="sans-serif-medium">安全模块</font><br>用于创建和管理功能的逻辑在专用<a href="https://developer.android.com/training/articles/keystore#HardwareSecurityModule">硬件安全模块</a>中实现。对于创建和存储密钥对，此位置更安全，因为它更能抵御远程攻击和针对模块的硬件攻击。</li></ul>]]></string>
     <string name="attestation_summary_format">版本：%1$s\n安全等级：%2$s</string>
     <string name="attestation_challenge">认证质询</string>
@@ -173,7 +180,7 @@
     <string name="authorization_list_attestationIdModel">型号</string>
     <string name="authorization_list_vendorPatchLevel">Vendor 补丁版本</string>
     <string name="authorization_list_bootPatchLevel">Boot 补丁版本</string>
-    <string name="authorization_list_mgfDigest">Rsa Oaep Mgf 摘要</string>
+    <string name="authorization_list_mgfDigest">RSA-OAEP MGF 摘要</string>
     <string name="authorization_list_earlyBootOnly">仅早期启动</string>
     <string name="authorization_list_usageCountLimit">使用次数限制</string>
     <string name="authorization_list_deviceUniqueAttestation">设备唯一认证</string>
@@ -181,7 +188,7 @@
     <string name="authorization_list_moduleHash">模块摘要</string>
 
     <string name="authorization_list_description"><![CDATA[
-    此数据结构包含密钥对的属性本身，如 Keymaster 或 KeyMint 硬件抽象层 (HAL) 中所定义。将这些值与设备的当前状态或一组预期值进行比较，以验证密钥对是否仍适用于您的应用。
+    此数据结构包含密钥对的属性本身，如 Keymaster 或 KeyMint 硬件抽象层（HAL）中所定义。将这些值与设备的当前状态或一组预期值进行比较，以验证密钥对是否仍适用于您的应用。
     ]]></string>
     <string name="authorization_list_purpose_description"><![CDATA[
     用于指定相应密钥可用于哪些目的。
@@ -199,7 +206,7 @@
     用于指定可与相应密钥配合使用的填充模式。此标记与 RSA 密钥和 AES 密钥有关。
     ]]></string>
     <string name="authorization_list_ecCurve_description"><![CDATA[
-    Android 系统密钥库中用于生成椭圆曲线 (EC) 密钥对的参数集，该参数集使用 ECDSA 进行签名和验证。
+    Android 系统密钥库中用于生成椭圆曲线（EC）密钥对的参数集，该参数集使用 ECDSA 进行签名和验证。
     ]]></string>
     <string name="authorization_list_rsaPublicExponent_description"><![CDATA[
     用于为 RSA 密钥对指定公开指数的值。此标记仅与 RSA 密钥有关，而且是所有 RSA 密钥都必需的标记。
@@ -317,7 +324,7 @@
     当 IIdentityCredential HAL 对凭据密钥进行认证时，它将被用于该 HAL 生成的认证中。IIdentityCredential 生成 KeyMint 样式的证明。
     ]]></string>
     <string name="authorization_list_moduleHash_description"><![CDATA[
-    用于指定 DER 编码的 APEX 模块信息的 SHA-256 摘要值
+    用于指定 DER 编码的 APEX 模块信息的 SHA-256 摘要值。
     ]]></string>
 
     <string name="knox">三星 Knox 认证</string>
