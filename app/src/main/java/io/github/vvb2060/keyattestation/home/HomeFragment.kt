@@ -250,12 +250,29 @@ class HomeFragment : AppFragment(), HomeAdapter.Listener, MenuProvider {
             R.id.menu_import_attest_key -> {
                 import.launch("text/xml")
             }
+            R.id.menu_update_revocation_list -> {
+                viewModel.updateRevocationList()
+            }
+            R.id.menu_revocation_list_info -> {
+                showRevocationListInfo()
+            }
             R.id.menu_about -> {
                 showAboutDialog()
             }
             else -> return false
         }
         return true
+    }
+
+    private fun showRevocationListInfo() {
+        val context = requireContext()
+        val info = viewModel.getRevocationListInfo()
+
+        AlertDialog.Builder(context)
+            .setTitle(R.string.revocation_list_info)
+            .setMessage(info)
+            .setPositiveButton(android.R.string.ok, null)
+            .show()
     }
 
     private fun showAboutDialog() {

@@ -19,6 +19,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.samsung.android.security.keystore.AttestationUtils
 import io.github.vvb2060.keyattestation.AppApplication
+import io.github.vvb2060.keyattestation.attestation.RevocationList
 import io.github.vvb2060.keyattestation.keystore.KeyStoreManager
 import io.github.vvb2060.keyattestation.repository.AttestationRepository
 import io.github.vvb2060.keyattestation.repository.BaseData
@@ -220,5 +221,31 @@ class HomeViewModel(
         val result = attestationRepository.checkRkp(useStrongBox)
 
         attestationData.postValue(result)
+    }
+
+    fun updateRevocationList() = AppApplication.executor.execute {
+        val success = RevocationList.updateFromNetwork()
+        if (success) {
+            AppApplication.toast("Revocation list updated successfully")
+        } else {
+            AppApplication.toast("Failed to update revocation list")
+        }
+    }
+
+    fun getRevocationListInfo(): String {
+        val publishTime = RevocationList.getPublishTime()
+        val lastUpdate = RevocationList.getLastUpdateTime()
+
+        val sb = StringBuilder()
+        if (publishTime != null) {
+            sb.append("Publish time: $publishTime\n")
+        }
+        if (lastUpdate > 0) {
+            val dateFormat = java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss", java.util.Locale.getDefault())
+            sb.append("Last updated: ${dateFormat.format(java.util.Date(lastUpdate))}")
+        } else {
+            sb.append("Using embedded revocation list")
+        }
+        return sb.toString()
     }
 }

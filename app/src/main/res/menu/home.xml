@@ -83,6 +83,16 @@
         android:title="@string/load_certs" />
 
     <item
+        android:id="@+id/menu_update_revocation_list"
+        android:showAsAction="never"
+        android:title="@string/update_revocation_list" />
+
+    <item
+        android:id="@+id/menu_revocation_list_info"
+        android:showAsAction="never"
+        android:title="@string/revocation_list_info" />
+
+    <item
         android:id="@+id/menu_about"
         android:showAsAction="never"
         android:title="@string/about" />

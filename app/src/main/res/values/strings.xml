@@ -15,6 +15,8 @@
     <string name="reset">Reset</string>
     <string name="load_certs">Load from file</string>
     <string name="save_certs">Save to file</string>
+    <string name="update_revocation_list">Update revocation list</string>
+    <string name="revocation_list_info">Revocation list info</string>
     <string name="about">About</string>
     <string name="open_source_info">This software is open source under %2$s (%1$s).</string>
     <string name="install_shizuku">Install Shizuku to use ID attestation (%s).</string>

@@ -15,6 +15,8 @@
     <string name="reset">Redefinir</string>
     <string name="load_certs">Carregar do arquivo</string>
     <string name="save_certs">Salvar em arquivo</string>
+    <string name="update_revocation_list">Atualizar lista de revogação</string>
+    <string name="revocation_list_info">Informações da lista de revogação</string>
     <string name="about">Sobre</string>
     <string name="open_source_info">Este software é de código aberto sob %2$s (%1$s).</string>
     <string name="install_shizuku">Instale o Shizuku para usar o Atestado de ID (%s).</string>

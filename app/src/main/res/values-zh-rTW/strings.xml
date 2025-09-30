@@ -15,6 +15,8 @@
     <string name="reset">重設</string>
     <string name="load_certs">從檔案讀取</string>
     <string name="save_certs">儲存到檔案</string>
+    <string name="update_revocation_list">更新撤銷清單</string>
+    <string name="revocation_list_info">撤銷清單資訊</string>
     <string name="about">關於</string>
     <string name="open_source_info">此軟體是 %2$s 下的開源軟體（%1$s）。</string>
     <string name="install_shizuku">安裝 Shizuku 使用識別碼認證（%s）。</string>
