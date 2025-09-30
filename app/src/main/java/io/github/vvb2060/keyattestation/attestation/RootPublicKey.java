@@ -14,6 +14,12 @@ import java.util.Set;
 import io.github.vvb2060.keyattestation.AppApplication;
 
 public class RootPublicKey {
+    public enum TestKey {
+        NONE,
+        RSA2048,
+        RSA4096,
+        RSA8192,
+    }
     public enum Status {
         NULL,
         FAILED,
@@ -104,6 +110,38 @@ public class RootPublicKey {
         }
         set.forEach(key -> Log.i(AppApplication.TAG, "getOemKeys: " + key));
         return set;
+    }
+
+    private static byte[] hexToBytes(String hex) {
+        int len = hex.length();
+        byte[] data = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            data[i / 2] = (byte) ((Character.digit(hex.charAt(i), 16) << 4)
+                    + Character.digit(hex.charAt(i + 1), 16));
+        }
+        return data;
+    }
+
+    /**
+     * Detect if verifiedBootKey matches known AVB test public keys by SHA-256 digest.
+     */
+    public static TestKey checkVbmetaTestKeyBySha256(byte[] verifiedBootKey) {
+        if (verifiedBootKey == null) return TestKey.NONE;
+
+        // Known SHA-256 fingerprints for AVB test keys
+        final String SHA256_RSA2048 = "22de3994532196f61c039e90260d78a93a4c57362c7e789be928036e80b77c8c";
+        final String SHA256_RSA4096 = "7728e30f50bfa5cea165f473175a08803f6a8346642b5aa10913e9d9e6defef6";
+        final String SHA256_RSA8192 = "e15e2365469ce672a91d02cc8d9c2f29b787481e574d3b56ac774153d7ced614";
+
+        var sha256_2048 = hexToBytes(SHA256_RSA2048);
+        var sha256_4096 = hexToBytes(SHA256_RSA4096);
+        var sha256_8192 = hexToBytes(SHA256_RSA8192);
+
+        if (Arrays.equals(verifiedBootKey, sha256_2048)) return TestKey.RSA2048;
+        if (Arrays.equals(verifiedBootKey, sha256_4096)) return TestKey.RSA4096;
+        if (Arrays.equals(verifiedBootKey, sha256_8192)) return TestKey.RSA8192;
+
+        return TestKey.NONE;
     }
 
     public static Status check(byte[] publicKey) {

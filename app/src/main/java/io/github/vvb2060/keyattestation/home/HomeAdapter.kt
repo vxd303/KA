@@ -105,6 +105,41 @@ class HomeAdapter(listener: Listener) : IdBasedRecyclerViewAdapter() {
     private fun updateData(attestationData: AttestationData) {
         addItemAt(1, BootStateViewHolder.CREATOR, attestationData, ID_BOOT_STATUS)
 
+        // If verifiedBootKey matches known AVB test keys (by SHA-1), show a warning header
+        var testKeyShown = false
+        attestationData.rootOfTrust?.verifiedBootKey?.let { vbk ->
+            when (RootPublicKey.checkVbmetaTestKeyBySha256(vbk)) {
+                RootPublicKey.TestKey.RSA2048 -> {
+                    addItemAt(2, HeaderViewHolder.CREATOR, HeaderData(
+                        R.string.vbmeta_testkey,
+                        R.string.vbmeta_testkey_rsa2048_summary,
+                        R.drawable.ic_error_outline_24,
+                        rikka.material.R.attr.colorAlert
+                    ), ID_VB_TESTKEY_WARNING)
+                    testKeyShown = true
+                }
+                RootPublicKey.TestKey.RSA4096 -> {
+                    addItemAt(2, HeaderViewHolder.CREATOR, HeaderData(
+                        R.string.vbmeta_testkey,
+                        R.string.vbmeta_testkey_rsa4096_summary,
+                        R.drawable.ic_error_outline_24,
+                        rikka.material.R.attr.colorAlert
+                    ), ID_VB_TESTKEY_WARNING)
+                    testKeyShown = true
+                }
+                RootPublicKey.TestKey.RSA8192 -> {
+                    addItemAt(2, HeaderViewHolder.CREATOR, HeaderData(
+                        R.string.vbmeta_testkey,
+                        R.string.vbmeta_testkey_rsa8192_summary,
+                        R.drawable.ic_error_outline_24,
+                        rikka.material.R.attr.colorAlert
+                    ), ID_VB_TESTKEY_WARNING)
+                    testKeyShown = true
+                }
+                else -> {}
+            }
+        }
+
         var id = ID_DESCRIPTION_START
         val attestation = attestationData.showAttestation ?: return
         addItem(CommonItemViewHolder.SECURITY_LEVEL_CREATOR, SecurityLevelData(
@@ -270,6 +305,7 @@ class HomeAdapter(listener: Listener) : IdBasedRecyclerViewAdapter() {
         private const val ID_ERROR = 0L
         private const val ID_CERT_STATUS = 1L
         private const val ID_BOOT_STATUS = 2L
+        private const val ID_VB_TESTKEY_WARNING = 3L
         private const val ID_CERT_INFO_START = 1000L
         private const val ID_RKP_HOSTNAME = 2000L
         private const val ID_DESCRIPTION_START = 3000L
