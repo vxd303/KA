@@ -28,7 +28,7 @@ if (local.exists()) {
 android {
     compileSdk = 35
     buildToolsVersion = '35.0.1'
-    namespace = 'io.github.vvb2060.keyattestation'
+    namespace = 'com.hoa.key'
     defaultConfig {
         minSdk = 24
         targetSdk = 35
@@ -156,6 +156,6 @@ abstract class ClassVisitorFactory implements AsmClassVisitorFactory<Instrumenta
     }
 
     boolean isInstrumentable(ClassData classData) {
-        return classData.className.startsWith("io.github.vvb2060.keyattestation.keystore.")
+        return classData.className.startsWith("com.hoa.key.keystore.")
     }
 }
